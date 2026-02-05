@@ -7,12 +7,14 @@ public class Main {
         Slot sp = new Slot();
         Wait wa = new Wait();
         Roulette rw = new Roulette();
+        Blackjack bj = new Blackjack();
         int running = 1;
         int coins = 100;
 
         while (running == 1){
-            System.out.println("Current Balance: " + coins + "\n1. Slots\n2. Roulette\n9. Exit" );
+            System.out.println("Current Balance: " + coins + "\n1. Slots\n2. Roulette\n3. BlackJack\n9. Exit" );
             int game = text.nextInt();
+            System.out.println();
 
             if (game == 1){
                 if (coins >=1){
@@ -48,6 +50,14 @@ public class Main {
                 else{
                     System.out.println("Not Enough Coins To Wager");
                 }
+            }
+            else if (game == 3){
+                System.out.println("How Many Coins to Wager");
+                int wager = text.nextInt();
+                coins -= wager;
+                coins += bj.Deal(wager);
+                System.out.println();
+                wa.wait(1000);
             }
             else if (game == 9){
                 System.out.println("Thanks For Gambling");
